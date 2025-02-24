@@ -1,3 +1,5 @@
+drop table if exists city;
+
 create table city
 (
     ID          int auto_increment primary key,
@@ -9,5 +11,5 @@ create table city
         foreign key (CountryCode) references country (Code)
 );
 
-create index CountryCode
+create index ix_city_CountryCode
     on city (CountryCode);

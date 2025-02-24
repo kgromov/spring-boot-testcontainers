@@ -4,15 +4,9 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="Create country table" author="admin">
+    <changeSet id="001 - Create tables" author="admin">
         <sqlFile relativeToChangelogFile="true" path="sql/country.sql"/>
-    </changeSet>
-
-    <changeSet id="Create city table" author="admin">
         <sqlFile relativeToChangelogFile="true" path="./sql/city.sql"/>
-    </changeSet>
-
-    <changeSet id="Create country language table" author="admin">
         <sqlFile relativeToChangelogFile="true" path="./sql/country-language.sql"/>
     </changeSet>
 </databaseChangeLog>

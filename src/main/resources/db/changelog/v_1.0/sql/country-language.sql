@@ -1,3 +1,5 @@
+drop table if exists countrylanguage;
+
 create table countrylanguage
 (
     CountryCode char(3)         default ''  not null,
@@ -9,5 +11,5 @@ create table countrylanguage
         foreign key (CountryCode) references country (Code)
 );
 
-create index CountryCode
+create index ix_lang_CountryCode
     on countrylanguage (CountryCode);

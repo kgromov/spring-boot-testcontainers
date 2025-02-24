@@ -1,3 +1,5 @@
+drop table if exists country;
+
 create table country
 (
     Code           char(3)                                                                                      default ''     not null primary key,
