@@ -1,20 +1,19 @@
 drop table if exists country;
 
-create table country
-(
-    Code           char(3)                                                                                      default ''     not null primary key,
-    Name           char(52)                                                                                     default ''     not null,
-    Continent      enum ('Asia', 'Europe', 'North America', 'Africa', 'Oceania', 'Antarctica', 'South America') default 'Asia' not null,
-    Region         char(26)                                                                                     default ''     not null,
-    SurfaceArea    decimal(10, 2)                                                                               default 0.00   not null,
-    IndepYear      smallint                                                                                                    null,
-    Population     int                                                                                          default 0      not null,
-    LifeExpectancy decimal(3, 1)                                                                                               null,
-    GNP            decimal(10, 2)                                                                                              null,
-    GNPOld         decimal(10, 2)                                                                                              null,
-    LocalName      char(45)                                                                                     default ''     not null,
-    GovernmentForm char(45)                                                                                     default ''     not null,
-    HeadOfState    char(60)                                                                                                    null,
-    Capital        int                                                                                                         null,
-    Code2          char(2)                                                                                      default ''     not null
-);
+CREATE TABLE IF NOT EXISTS country (
+   Code             VARCHAR(3) NOT NULL PRIMARY KEY,
+   Name             VARCHAR(60) NOT NULL,
+   Continent        ENUM ('Asia', 'Europe', 'North America', 'Africa', 'Oceania', 'Antarctica', 'South America') NOT NULL,
+   Region           VARCHAR(32) NOT NULL,
+   SurfaceArea      DECIMAL(10, 2) NOT NULL,
+   IndepYear        SMALLINT,
+   Population       INT NOT NULL,
+   LifeExpectancy   DECIMAL(3, 1),
+   GNP              DECIMAL(10, 2),
+   GNPOld           DECIMAL(10, 2),
+   LocalName        VARCHAR(45) NOT NULL,
+   GovernmentForm   VARCHAR(45) NOT NULL,
+   HeadOfState      VARCHAR(60),
+   Capital          INT,
+   Code2            VARCHAR(2) NOT NULL
+) engine=InnoDB;

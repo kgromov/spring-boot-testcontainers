@@ -1,9 +1,12 @@
 package org.kgromov;
 
 import org.junit.jupiter.api.Test;
+import org.kgromov.domain.Country;
 import org.kgromov.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @MySqlIntegrationTest
 @Transactional
@@ -12,7 +15,8 @@ class MySqlJpaTest {
 
     @Test
     void testAll() {
-        countryRepository.findAll().forEach(System.out::println);
+        List<Country> countries = countryRepository.findAll();
+        countries.forEach(System.out::println);
     }
 
 }

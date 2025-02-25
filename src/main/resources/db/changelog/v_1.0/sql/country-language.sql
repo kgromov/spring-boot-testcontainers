@@ -1,15 +1,11 @@
 drop table if exists countrylanguage;
 
-create table countrylanguage
-(
-    CountryCode char(3)         default ''  not null,
-    Language    char(30)        default ''  not null,
-    IsOfficial  enum ('T', 'F') default 'F' not null,
-    Percentage  decimal(4, 1)   default 0.0 not null,
-    primary key (CountryCode, Language),
-    constraint countryLanguage_ibfk_1
-        foreign key (CountryCode) references country (Code)
-);
-
-create index ix_lang_CountryCode
-    on countrylanguage (CountryCode);
+CREATE TABLE IF NOT EXISTS countrylanguage (
+    CountryCode VARCHAR(3)   NOT NULL,
+    Language    VARCHAR(30)  NOT NULL,
+    IsOfficial  ENUM ('T', 'F') default 'F' NOT NULL,
+    Percentage  DECIMAL(4, 1)   default 0.0 NOT NULL,
+    PRIMARY KEY (CountryCode, Language),
+    FOREIGN KEY (CountryCode) REFERENCES country(Code),
+    INDEX(CountryCode)
+) engine=InnoDB;

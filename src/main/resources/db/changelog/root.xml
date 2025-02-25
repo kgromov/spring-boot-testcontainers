@@ -6,6 +6,8 @@
 
     <property name="uuidType" value="varchar(36)" dbms="mysql"/>
 
-    <includeAll path="v_1.0" relativeToChangelogFile="true" />
+<!--    <includeAll path="v_1.0" relativeToChangelogFile="true" />-->
+    <include file="./v_1.0/create-tables.xml" relativeToChangelogFile="true" />
+    <include file="./v_1.0/insert-data.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

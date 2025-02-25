@@ -1,15 +1,11 @@
 drop table if exists city;
 
-create table city
-(
-    ID          int auto_increment primary key,
-    Name        char(35) default '' not null,
-    CountryCode char(3)  default '' not null,
-    District    char(20) default '' not null,
-    Population  int      default 0  not null,
-    constraint city_ibfk_1
-        foreign key (CountryCode) references country (Code)
-);
-
-create index ix_city_CountryCode
-    on city (CountryCode);
+CREATE TABLE IF NOT EXISTS city (
+    ID          INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Name        VARCHAR(35) NOT NULL,
+    CountryCode VARCHAR(3)  NOT NULL,
+    District    VARCHAR(20) NOT NULL,
+    Population  INT UNSIGNED DEFAULT 0 NOT NULL,
+    FOREIGN KEY (CountryCode) REFERENCES country(Code),
+    INDEX(CountryCode)
+) engine=InnoDB;
