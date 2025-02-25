@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="201 = Insert data into tables" author="konstantin">
+    <changeSet id="002 = Insert data into tables" author="konstantin">
         <loadData
                 file="./data/country.csv"
                 relativeToChangelogFile="true"

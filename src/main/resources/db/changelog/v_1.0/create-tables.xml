@@ -4,107 +4,10 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <!-- fucking liquibase can't properly execute sql - at least for MySQL
     <changeSet id="001 - Create tables" author="admin">
         <sqlFile relativeToChangelogFile="true" path="sql/country.sql"/>
         <sqlFile relativeToChangelogFile="true" path="./sql/city.sql"/>
         <sqlFile relativeToChangelogFile="true" path="./sql/country-language.sql"/>
     </changeSet>
-     -->
 
-    <changeSet id="101 - Create country table" author="konstantin">
-        <createTable tableName="country">
-            <column name="Code" type="varchar(3)" >
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="Name" type="varchar(60)" >
-                <constraints nullable="false"/>
-            </column>
-            <column name="Continent" type="varchar(32)" >
-                <constraints nullable="false"/>
-            </column>
-            <column name="Region" type="varchar(32)" >
-                <constraints nullable="false"/>
-            </column>
-            <column name="SurfaceArea" type="decimal(10, 2)" >
-                <constraints nullable="false"/>
-            </column>
-            <column name="IndepYear" type="smallint" >
-                <constraints nullable="true"/>
-            </column>
-            <column name="Population" type="int" >
-                <constraints nullable="false"/>
-            </column>
-            <column name="LifeExpectancy" type="decimal(3, 1)" >
-                <constraints nullable="true"/>
-            </column>
-            <column name="GNP" type="decimal(10, 2)" >
-                <constraints nullable="true"/>
-            </column>
-            <column name="GNPOld" type="decimal(10, 2)" >
-                <constraints nullable="true"/>
-            </column>
-            <column name="LocalName" type="varchar(45)" >
-                <constraints nullable="false"/>
-            </column>
-            <column name="GovernmentForm" type="varchar(45)" >
-                <constraints nullable="false"/>
-            </column>
-            <column name="HeadOfState" type="varchar(60)" >
-                <constraints nullable="true"/>
-            </column>
-            <column name="Capital" type="int" >
-                <constraints nullable="true"/>
-            </column>
-            <column name="Code2" type="varchar(2)" >
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="102" author="konstantin">
-        <createTable tableName="city">
-            <column name="ID" type="int" autoIncrement="true">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="Name" type="varchar(35)" >
-                <constraints nullable="false"/>
-            </column>
-            <column name="CountryCode" type="varchar(3)" >
-                <constraints nullable="false"
-                             foreignKeyName="fk_city_country"
-                             referencedTableName="country"
-                             referencedColumnNames="Code"/>
-            </column>
-            <column name="District" type="varchar(20)" >
-                <constraints nullable="false"/>
-            </column>
-            <column name="Population" type="int" >
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="103" author="konstantin">
-        <createTable tableName="countrylanguage">
-            <column name="CountryCode" type="varchar(3)" >
-                <constraints nullable="false"
-                             foreignKeyName="fk_countrylanguage_country"
-                             referencedTableName="country"
-                             referencedColumnNames="Code"/>
-            </column>
-            <column name="Language" type="varchar(30)" >
-                <constraints nullable="false"/>
-            </column>
-            <column name="IsOfficial" type="varchar(1)" >
-                <constraints nullable="false"/>
-            </column>
-            <column name="Percentage" type="decimal(4, 1)" >
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey tableName="countrylanguage"
-                       columnNames="CountryCode, Language"/>
-    </changeSet>
 </databaseChangeLog>
