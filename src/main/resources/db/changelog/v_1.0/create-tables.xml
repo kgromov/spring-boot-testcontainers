@@ -5,7 +5,7 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="001 - Create tables" author="admin">
-        <sqlFile relativeToChangelogFile="true" path="sql/country.sql"/>
+        <sqlFile relativeToChangelogFile="true" path="./sql/country.sql"/>
         <sqlFile relativeToChangelogFile="true" path="./sql/city.sql"/>
         <sqlFile relativeToChangelogFile="true" path="./sql/country-language.sql"/>
     </changeSet>

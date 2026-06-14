@@ -12,7 +12,7 @@ class MysqlTestcontainersConfiguration {
 
     @Container
     @ServiceConnection
-    static  MySQLContainer<?> mysqlContainer = new MySQLContainer<>(DockerImageName.parse("mysql:latest"))
+    static  MySQLContainer<?> mysqlContainer = new MySQLContainer<>(DockerImageName.parse("mysql:8.0.29"))
             .withReuse(true);
 
 //    @Bean
