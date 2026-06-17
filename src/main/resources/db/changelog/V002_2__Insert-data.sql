@@ -1,4 +1,6 @@
 -- V002_2__Insert-data.sql
+SET GLOBAL local_infile=ON;
+
 LOAD DATA LOCAL INFILE './src/main/resources/db/changelog/data/country.csv'
 INTO TABLE country
      FIELDS TERMINATED BY ','
