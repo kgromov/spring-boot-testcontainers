@@ -2,6 +2,7 @@ package org.kgromov.migrations;
 
 import org.flywaydb.core.api.migration.BaseJavaMigration;
 import org.flywaydb.core.api.migration.Context;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -10,19 +11,18 @@ import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.PreparedStatement;
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
+@Profile("imperative")
 @Component
-public class V002_2__InsertDataFromCsvJdbcTemplateMigration extends BaseJavaMigration {
+public class V003__InsertDataFromCsvJdbcTemplateMigration extends BaseJavaMigration {
     private final JdbcTemplate jdbcTemplate;
 
-    public V002_2__InsertDataFromCsvJdbcTemplateMigration(JdbcTemplate jdbcTemplate) {
+    public V003__InsertDataFromCsvJdbcTemplateMigration(JdbcTemplate jdbcTemplate) {
         super();
         this.jdbcTemplate = jdbcTemplate;
     }
