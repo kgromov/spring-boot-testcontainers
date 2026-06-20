@@ -1,5 +1,6 @@
 package org.kgromov.migrations;
 
+import jakarta.annotation.PostConstruct;
 import org.flywaydb.core.api.migration.BaseJavaMigration;
 import org.flywaydb.core.api.migration.Context;
 import org.springframework.context.annotation.Profile;
@@ -20,11 +21,10 @@ import java.util.Map;
 @Profile("imperative")
 @Component
 public class V003__InsertDataFromCsvJdbcTemplateMigration extends BaseJavaMigration {
-    private final JdbcTemplate jdbcTemplate;
 
-    public V003__InsertDataFromCsvJdbcTemplateMigration(JdbcTemplate jdbcTemplate) {
-        super();
-        this.jdbcTemplate = jdbcTemplate;
+    @PostConstruct
+    public void init() {
+       super.init();
     }
 
     @Override
