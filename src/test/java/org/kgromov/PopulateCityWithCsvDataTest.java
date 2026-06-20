@@ -2,6 +2,7 @@ package org.kgromov;
 
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.Test;
+import org.kgromov.migrations.V3__InsertDataFromCsvJdbcTemplateMigration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
@@ -21,9 +22,6 @@ public class PopulateCityWithCsvDataTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Autowired
-    private Flyway flyway;
-
     @Test
     void shouldPopulateDisplayNamesForExistingUsers() {
         List<Map<String, Object>> citiesBefore = jdbcTemplate.queryForList(
@@ -31,7 +29,13 @@ public class PopulateCityWithCsvDataTest {
         );
         assertThat(citiesBefore).isEmpty();
 
-        flyway.migrate();
+        Flyway flywayToV3 = Flyway.configure()
+                .dataSource(jdbcTemplate.getDataSource())
+                .target("3")
+                .locations("classpath:db/changelog")
+                .javaMigrations(new V3__InsertDataFromCsvJdbcTemplateMigration())
+                .load();
+        flywayToV3.migrate();
 
         List<Map<String, Object>> citiesAfter = jdbcTemplate.queryForList(
                 "SELECT ID, Name, CountryCode, District, Population FROM city"

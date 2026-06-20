@@ -13,6 +13,7 @@ class MysqlTestcontainersConfiguration {
     @Container
     @ServiceConnection
     static MySQLContainer<?> mysqlContainer = new MySQLContainer<>(DockerImageName.parse("mysql:8.0.29"))
+            .withDatabaseName("flyway")
             .withUrlParam("allowLoadLocalInfile", "true")
             .withCommand("--local-infile=1")
             .withReuse(true);

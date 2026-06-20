@@ -26,10 +26,10 @@ public class V4__InsertDataFromCsvJdbcVanillaMigration extends BaseJavaMigration
                     .map(line -> line.split(","))
                     .forEach(cityColumns -> {
                         try {
-                            ps.setString(1, cityColumns[1]);
-                            ps.setString(2, cityColumns[2]);
-                            ps.setString(3, cityColumns[3]);
-                            ps.setBigDecimal(4, new BigDecimal(cityColumns[4]));
+                            ps.setString(1, cityColumns[0]);
+                            ps.setString(2, cityColumns[1]);
+                            ps.setString(3, cityColumns[2]);
+                            ps.setBigDecimal(4, new BigDecimal(cityColumns[3]));
                             ps.addBatch();
                         } catch (SQLException e) {
                             throw new RuntimeException(e);
