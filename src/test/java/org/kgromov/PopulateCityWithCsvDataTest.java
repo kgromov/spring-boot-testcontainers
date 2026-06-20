@@ -15,9 +15,9 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 @ActiveProfiles("imperative")
 @MySqlIntegrationTest
 @TestPropertySource(properties = {
-        "spring.flyway.target=001.1"
+        "spring.flyway.target=2"
 })
-public class PopulateCityWithCsvData {
+public class PopulateCityWithCsvDataTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 

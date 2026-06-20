@@ -1,4 +1,4 @@
--- V001_1__Create_tables.sql
+-- V1__Create_tables.sql
 drop table if exists country;
 CREATE TABLE IF NOT EXISTS country (
                                        Code             VARCHAR(3) NOT NULL PRIMARY KEY,

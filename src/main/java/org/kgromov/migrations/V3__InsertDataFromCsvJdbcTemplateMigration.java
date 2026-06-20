@@ -20,7 +20,7 @@ import java.util.Map;
 
 @Profile("imperative")
 @Component
-public class V003__InsertDataFromCsvJdbcTemplateMigration extends BaseJavaMigration {
+public class V3__InsertDataFromCsvJdbcTemplateMigration extends BaseJavaMigration {
 
     @PostConstruct
     public void init() {
@@ -30,7 +30,7 @@ public class V003__InsertDataFromCsvJdbcTemplateMigration extends BaseJavaMigrat
     @Override
     public void migrate(Context context) {
         var jdbcTemplate = new JdbcTemplate(new SingleConnectionDataSource(context.getConnection(), true));
-        ClassPathResource csvFile = new ClassPathResource("db/changelog/city.csv");
+        ClassPathResource csvFile = new ClassPathResource("db/changelog/data/city.csv");
         try {
             List<String> cityRows = Files.readAllLines(Paths.get(csvFile.getURI())).stream().skip(1).toList();
             jdbcTemplate.batchUpdate(

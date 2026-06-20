@@ -15,11 +15,11 @@ import java.sql.SQLException;
 
 @Profile("imperative")
 @Component
-public class V004__InsertDataFromCsvJdbcVanillaMigration extends BaseJavaMigration {
+public class V4__InsertDataFromCsvJdbcVanillaMigration extends BaseJavaMigration {
 
     @Override
     public void migrate(Context context) {
-        ClassPathResource csvFile = new ClassPathResource("db/changelog/countrylanguage.csv");
+        ClassPathResource csvFile = new ClassPathResource("db/changelog/data/countrylanguage.csv");
         String insertSql = "INSERT INTO countrylanguage (CountryCode, Language, IsOfficial, Percentage) VALUES (?, ?, ?, ?)";
         try (PreparedStatement ps = context.getConnection().prepareStatement(insertSql)) {
             Files.readAllLines(Paths.get(csvFile.getURI())).stream().skip(1)
