@@ -1,5 +1,6 @@
 package org.kgromov;
 
+import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.Test;
 import org.kgromov.domain.Country;
 import org.kgromov.repository.CountryRepository;
@@ -8,15 +9,28 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @MySqlIntegrationTest
 @Transactional
 class MySqlJpaTest {
     @Autowired private CountryRepository countryRepository;
 
     @Test
-    void testAll() {
+    void findAll_returnsAllCountries() {
         List<Country> countries = countryRepository.findAll();
-        countries.forEach(System.out::println);
+
+        assertThat(countries).extracting(Country::getName).isNotNull();
+        assertThat(countries).extracting(Country::getCode).allMatch(code -> code.length() == 3);
+        assertThat(countries).extracting(Country::getCode2).allMatch(code -> code.length() == 2);
+    }
+
+
+    @Test
+    void count_ReturnsAllCountriesCount() {
+        long countries = countryRepository.count();
+
+        assertThat(countries).isEqualTo(239);
     }
 
 }
