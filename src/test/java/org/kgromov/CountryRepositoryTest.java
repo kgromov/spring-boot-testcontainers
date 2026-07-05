@@ -1,6 +1,5 @@
 package org.kgromov;
 
-import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.Test;
 import org.kgromov.domain.Country;
 import org.kgromov.repository.CountryRepository;
@@ -13,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @MySqlIntegrationTest
 @Transactional
-class MySqlJpaTest {
+class CountryRepositoryTest {
     @Autowired private CountryRepository countryRepository;
 
     @Test
